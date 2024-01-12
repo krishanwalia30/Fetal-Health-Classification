@@ -1,5 +1,5 @@
 from FetalHealthC.constants import *
-from FetalHealthC.entity import DataIngestionConfig
+from FetalHealthC.entity import DataIngestionConfig, DataValidationConfig
 from FetalHealthC.utils.common import read_yaml, create_directories
 
 
@@ -27,3 +27,17 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation 
+
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir= config.root_dir,
+            STATUS_FILE= config.STATUS_FILE,
+            required_files= config.required_files,
+            data_path= config.data_path
+        )
+        
+        return data_validation_config

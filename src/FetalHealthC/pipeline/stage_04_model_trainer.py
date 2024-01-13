@@ -13,7 +13,7 @@ class ModelTrainerTrainingPipeline:
         model_trainer = ModelTrainer(model_trainer_config)
         model_trainer.initiate_model_training()
 
-if __name__ == __name__:
+if __name__ == "__main__":
     try:
         STAGE_NAME = 'Model Trainer Stage'
 

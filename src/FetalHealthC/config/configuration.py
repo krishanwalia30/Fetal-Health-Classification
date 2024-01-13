@@ -1,5 +1,5 @@
 from FetalHealthC.constants import *
-from FetalHealthC.entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelTrainerConfig
+from FetalHealthC.entity import DataIngestionConfig, DataTransformationConfig, DataValidationConfig, ModelEvaluationConfig, ModelTrainerConfig
 from FetalHealthC.utils.common import read_yaml, create_directories
 
 
@@ -69,3 +69,17 @@ class ConfigurationManager:
         )
         
         return model_trainer_config
+    
+    def get_model_evaluation_config(self)->ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir = config.root_dir,
+            model_path = config.model_path,
+            test_path= config.test_path,
+            metrics_file_path = config.metrics_file_path
+        )
+        
+        return model_evaluation_config

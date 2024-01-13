@@ -23,3 +23,9 @@ class DataTransformationConfig:
     data_path: Path
     train_path: Path
     test_path: Path
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    model_path: Path
+    train_path: Path 

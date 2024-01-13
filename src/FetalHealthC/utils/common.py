@@ -72,6 +72,10 @@ def get_size(path:Path) -> str:
 def save_object(path:Path, obj):
     """
     save object to file
+
+    Args:
+        path: Path
+        obj: Object
     """
     try:
         # dir_path = os.path.dirname(path)

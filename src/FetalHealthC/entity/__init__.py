@@ -15,3 +15,11 @@ class DataValidationConfig:
     STATUS_FILE: Path
     required_files: list
     data_path: Path
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    preprocessor_path: Path
+    data_path: Path
+    train_path: Path
+    test_path: Path

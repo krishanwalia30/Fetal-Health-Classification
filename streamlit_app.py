@@ -32,12 +32,13 @@ def main():
     #     st.write()
     
     # with col2:
-    st.write("Reduction of child mortality is reflected in several of the United Nations' Sustainable Development Goals and is a key indicator of human progress. The UN expects that by 2030, countries end preventable deaths of newborns and children under 5 years of age, with all countries aiming to reduce under‑5 mortality to at least as low as 25 per 1,000 live births. \n\n Parallel to notion of child mortality is of course maternal mortality, which accounts for 295 000 deaths during and following pregnancy and childbirth (as of 2017). The vast majority of these deaths (94%) occurred in low-resource settings, and most could have been prevented.In light of what was mentioned above, Cardiotocograms (CTGs) are a simple and cost accessible option to assess fetal health, allowing healthcare professionals to take action in order to prevent child and maternal mortality. The equipment itself works by sending ultrasound pulses and reading its response, thus shedding light on fetal heart rate (FHR), fetal movements, uterine contractions and more.")
+    st.write("Reduction of child mortality is reflected in several of the United Nations' Sustainable Development Goals and is a key indicator of human progress. The UN expects that by 2030, countries end preventable deaths of newborns and children under 5 years of age, with all countries aiming to reduce under‑5 mortality to at least as low as 25 per 1,000 live births. \n\n Parallel to notion of child mortality is of course maternal mortality, which accounts for 295,000 deaths during and following pregnancy and childbirth (as of 2017). The vast majority of these deaths (94%) occurred in low-resource settings, and most could have been prevented.In light of what was mentioned above, Cardiotocograms (CTGs) are a simple and cost accessible option to assess fetal health, allowing healthcare professionals to take action in order to prevent child and maternal mortality. The equipment itself works by sending ultrasound pulses and reading its response, thus shedding light on fetal heart rate (FHR), fetal movements, uterine contractions and more.")
         
 
 
 
     col3, col4 = st.columns([1.7,1])
+    
 
     col3.subheader('📄:green[Enter Details in the form below]', anchor=False)
     with col3.form('FetalHealthClassification', border=False):
@@ -53,13 +54,15 @@ def main():
             df.to_csv(clApp.filename, index=False)
 
             result = clApp.classifier.predict()
-            print(result)
+            # print(result)
             if result == 1:
-                st.write("The baby is normal")
+                st.subheader(":green[Result:] The baby is normal")
             elif result == 2:
-                st.write("The health of the baby is in suspection")
+                st.subheader(":blue[Result:] The health of the baby is suspecious")
+                st.write("It is highly recommended to visit the doctor as a preventive measure to take care of the health of both the mother and the baby.")
             else:
-                st.write("The baby is pathological")
+                st.subheader(":red[Result:] The baby is pathological")
+                st.write("It is highly recommended to visit the doctor as a preventive measure to take care of the health of both the mother and the baby.")
     
     col4.subheader('', anchor=False)
     with col4:
@@ -71,9 +74,46 @@ def main():
         ]
 
         st.image('template/images/fetal_health.jpg', clamp=True, caption="Fetal Health")
+        st.subheader(':green[Introduction]')
+        st.write("Fetal and maternal health have a close correlation. Reducing the fetal death rate and monitoring fetal health conditions are essential formaintaining good health for both mother and child. CTG or electronic fetal monitoring (EFM) is the prenatal test for monitoring uterine contrac-tions and fetal heartbeat during pregnancy and childbirth.")
+        
         df = pd.DataFrame(accuracy_models, columns=['Model', 'Accuracy', 'Precision', 'Recall', 'F1-Score', 'Support'], index=[1,2,3,4])
+        st.subheader(":green[Machine Learning]")
+        st.write("Machine Learning (ML) techniques can help medical experts make early decisions during complex situations like diagnosis, effectively decreasingthe MMR and high complications during labour. Classifying the stages of fetal health is a challenging task, but this can be outstandingly handledby ML classification techniques.\n\n Several Machine Learning models were developed and optimized for more accurate predictions in the fetal health classification. The models developed and the score obtained from the model developed are as follows:")
         st.table(df)
-        # st.write('hello world')
+
+        st.subheader(":green[Conclusion]")
+        st.write("Analyzing the scores of the classification done on the test data. Among all the machine learning models, it has been found that **Support Vector Machine** has given the best results.")
+
+        st.subheader(":green[References]")
+        st.write("The following references have been used for this project:")
+
+        st.markdown("""- <html>
+                    <head></head>
+                    <body>
+                        <div>
+                            <a href="https://www.researchgate.net/publication/356666279_Fetal_health_classification_from_cardiotocographic_data_using_machine_learning"> Fetal Health Classification From CTG </a>
+                        </div>
+                    </body>
+                    </html>""",unsafe_allow_html=True)
+        
+        st.markdown("""- <html>
+                    <head></head>
+                    <body>
+                        <div>
+                            <a href="https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification"> Fetal Health Classification Dataset </a>
+                        </div>
+                    </body>
+                    </html>""",unsafe_allow_html=True)
+        
+        st.markdown("""- <html>
+                    <head></head>
+                    <body>
+                        <div>
+                            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10417593/"> Early Diagnosis and Classification of Fetal Health Status </a>
+                        </div>
+                    </body>
+                    </html>""",unsafe_allow_html=True)
 
 if __name__ == "__main__":
     clApp = ClientApp()

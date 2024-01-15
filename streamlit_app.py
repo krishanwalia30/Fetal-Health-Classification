@@ -63,10 +63,17 @@ def main():
     
     col4.subheader('', anchor=False)
     with col4:
-        st.
-        st.image('template/images/fetal_health.jpg', clamp=True, caption="Fetal Health")
+        accuracy_models = [
+            ['Support Vector Machine', 93.42,93,93,93,635],
+            ['Random Forest', 91.5,93,94,93,635],
+            ['Decision Tree', 92.95,93,95,93,635],
+            ['K Nearest Neighbors', 92.01,93,96,93,635],
+        ]
 
-        st.write('hello world')
+        st.image('template/images/fetal_health.jpg', clamp=True, caption="Fetal Health")
+        df = pd.DataFrame(accuracy_models, columns=['Model', 'Accuracy', 'Precision', 'Recall', 'F1-Score', 'Support'], index=[1,2,3,4])
+        st.table(df)
+        # st.write('hello world')
 
 if __name__ == "__main__":
     clApp = ClientApp()

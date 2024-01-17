@@ -45,18 +45,16 @@ _After the model has been trained, evaluating the model based on the unknown dat
 
 **Package used:** Scikit-Learn, Pandas, Numpy, Matplotlib, Seaborn, Streamlit, Scipy, Flask, pyYAML, catBoost, ensure, python_box
 
-## Accuracy of the Developed Models
+## Metrics of the Developed Models
 
+| Model Name | Accuracy | Precision | Recall | F1 Score | Support |
+|---|---|---|---|---|---|
+| Support Vector Machine | 93.4200 | 93 | 93 | 93 | 635 |
+| Random Forest | 91.500 | 93 | 94 | 93 | 635 |
+| Decision Tree | 92.950 | 93 | 95 | 93 | 635 |
+|K Nearest Neighbors| 92.0100 | 93 | 96 | 93 | 635 |
 
-
-| Model Name | Accuracy | 
-|---|---|
-| Support Vector Machine | 93.4200 |
-| Random Forest | 91.500 |
-| Decision Tree | 92.950 |
-|K Nearest Neighbors| 92.0100 |
-
-
+The accuracy of **SVM model** is the highest accuracy, hence used in the pipeline for prediction
 
 
 ## 💻 How to run?

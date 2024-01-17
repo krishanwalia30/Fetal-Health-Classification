@@ -45,7 +45,7 @@ _After the model has been trained, evaluating the model based on the unknown dat
 
 **Package used:** Scikit-Learn, Pandas, Numpy, Matplotlib, Seaborn, Streamlit, Scipy, Flask, pyYAML, catBoost, ensure, python_box
 
-## Metrics of the Developed Models
+## 🧮 Metrics of the Developed Models
 
 | Model Name | Accuracy | Precision | Recall | F1 Score | Support |
 |---|---|---|---|---|---|
